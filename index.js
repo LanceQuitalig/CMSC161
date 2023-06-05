@@ -1,15 +1,20 @@
-// Todo:
-// serve via webhost (github pages)
-// If not add instructions for servez
+////////////////////////////////////////////////////////////////// 
 
-// Add text denoting features
+// Author: Quitalig, Lance Jasper A.
+// Subject: CMSC 161: Integrated Computer Graphics
+// Section: B-1L
 
-// Features of this program:
-// Fixed snap rotation
-// Added texture mapping
-// Added XYZ translation (AD / WS / QE)
-// Added scale transformation (+-)
-// Added div buttons to change cube texture
+// Program Features:
+// Cube rotation on mouse movement
+// Bocchi The Rock's Bocchi texture mapping
+// XYZ translation by pressing the buttons: (AD / WS / QE)
+// Scale transformation by pression the buttons: (+-)
+// Div image buttons that change the cube's texture when clicked
+// Div image texts that welcome the user and show instructions
+// Served via Github Pages
+
+////////////////////////////////////////////////////////////////// 
+
 
 // Required code for mounting WebGL2 to program
 const canvas = document.querySelector("#output");
@@ -293,15 +298,9 @@ mouseMoveTest(document.getElementById("output"), (event) => {
         direction.initialY = event.clientY;
     }
 
-    // Calculation for z axis rotations relative to the Y coordinate mouse movements
-    if (direction.Rx > 0) direction.Rz = (1 / 10);
-    else direction.Rz = -(1 / 10);
-
     // Then rotates the cube relative to the calculated directions
     glMatrix.mat4.rotateX(model_matrix, model_matrix, glMatrix.glMatrix.toRadian(direction.Rx * Math.PI));
     glMatrix.mat4.rotateY(model_matrix, model_matrix, glMatrix.glMatrix.toRadian(direction.Ry * Math.PI));
-    glMatrix.mat4.rotateZ(model_matrix, model_matrix, glMatrix.glMatrix.toRadian(direction.Rz * Math.PI));
-
 
     // Then redraws the cube and its textures
     drawScene();

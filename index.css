@@ -42,21 +42,31 @@
     margin: auto;
     display: block;
     width: 800px;
-    border: 1px;
-}
-
-#main_container {
-    background-color: black;    
 }
 
 #title {
-    text-align: center;
+    width: 400px;
+    height: 60px;
+    background-image: url("images/welcome-text.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 0;
+    margin: auto;
+    display: block;
     position: relative;
-    top: 100px;
+    top: 80px;
 }
 
-#instructions {
-    text-align: center;
+#instruction {
+    width: 450px;
+    height: 100px;
+    background-image: url("images/instruction-text.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 0;
+    margin: auto;
+    display: block;
     position: relative;
-    top: -500px;
+    top: -420px;
+    left: -165px;
 }
