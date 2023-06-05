@@ -257,6 +257,7 @@ var direction = {
     dirY: 0,
     Rx: 0,
     Ry: 0,
+    Rz: 0,
 }
 
 // Function to mount given callback function when mouse is pressed and moving
@@ -292,9 +293,15 @@ mouseMoveTest(document.getElementById("output"), (event) => {
         direction.initialY = event.clientY;
     }
 
+    // Calculation for z axis rotations relative to the Y coordinate mouse movements
+    if (direction.Rx > 0) direction.Rz = (1 / 10);
+    else direction.Rz = -(1 / 10);
+
     // Then rotates the cube relative to the calculated directions
     glMatrix.mat4.rotateX(model_matrix, model_matrix, glMatrix.glMatrix.toRadian(direction.Rx * Math.PI));
     glMatrix.mat4.rotateY(model_matrix, model_matrix, glMatrix.glMatrix.toRadian(direction.Ry * Math.PI));
+    glMatrix.mat4.rotateZ(model_matrix, model_matrix, glMatrix.glMatrix.toRadian(direction.Rz * Math.PI));
+
 
     // Then redraws the cube and its textures
     drawScene();
