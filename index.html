@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title> CMSC 161 Project - Quitalig </title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="main_container">
+            <h1 id="title">WELCOME TO BOCCHI CUBE</h1>
+            <canvas id="output" width="720" height="720"> </canvas>
+            <div id="happy"> </div>
+            <div id="sad"> </div>
+            <div id="confused"> </div>
+            <h1 id="instructions">press WASD / QE / +- OR drag the cube</h1>
+        </div>
+        
+        <script id="vertex-shader" type="mamamo">#version 300 es
+            in vec4 a_position;
+
+            in vec2 a_texcoord;
+            out vec2 v_texcoord;
+
+            uniform mat4 u_model_matrix;
+            uniform mat4 u_view_matrix;
+            uniform mat4 u_projection_matrix;
+
+            void main() {
+                gl_Position = u_projection_matrix * u_view_matrix * u_model_matrix * a_position;
+
+                v_texcoord = a_texcoord;
+            }
+        </script>
+
+        <script id="fragment-shader" type="mamamo">#version 300 es
+            precision mediump float;
+            
+            out vec4 outColor;
+
+            in vec2 v_texcoord;
+            uniform sampler2D u_texture;
+
+            void main() {
+                outColor = texture(u_texture, v_texcoord);
+            }
+        </script>
+
+        <script src="gl-matrix.js"> </script>
+        <script src="index.js"> </script>
+    </body>
+</html>
